@@ -3,31 +3,23 @@
 
 class Material
 
-    # example for global method so no need to define Material.new
-    # def self.isEmpty
-    # end
-
-    # don't change, in my case only for array length 3 
-    @@fruits = Array.new(3)
-    @@lastLength = 0
+    @@fruits = Array.new
 
     # this method is like Material.new init
     def initialize()
-        @@lastLength = 0
         @@fruits.clear
     end
 
     def isEmpty
-        @@lastLength > 0 ? true : false
+        @@fruits.length > 0 ? true : false
     end
 
     def add(fruit)
-        @@fruits[@@lastLength] = fruit
-        @@lastLength = @@lastLength + 1
+        @@fruits.push(fruit)
     end
 
     def getSize
-        @@lastLength
+        @@fruits.length
     end
 
     def contains(fruit)
@@ -36,7 +28,6 @@ class Material
 
     def delete(fruit)
         @@fruits.delete(fruit)
-        @@lastLength = @@lastLength - 1
     end
 
     def show
@@ -46,18 +37,6 @@ class Material
     # run-app
     # if @isTest == false
         # m = Material.new
-        # m.add("Jambu")
-        # m.add("Durian")
-        # m.add("Sirsak")
-        # puts m.getSize
-        # puts
-        # puts m.show
-        # puts
-        # m.delete("Durian")
-        # puts
-        # puts m.show
-        # puts
-        # puts m.getSize
     # end
 
 end
