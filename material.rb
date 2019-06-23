@@ -11,6 +11,12 @@ class Material
     @@fruits = Array.new(3)
     @@lastLength = 0
 
+    # this method is like Material.new init
+    def initialize()
+        @@lastLength = 0
+        @@fruits.clear
+    end
+
     def isEmpty
         @@lastLength > 0 ? true : false
     end
@@ -28,17 +34,31 @@ class Material
         @@fruits.include?(fruit)
     end
 
-    # run-app
-    if @isTest == false
-        m = Material.new
-        puts m.isEmpty
-        m = Material.new
-        m.add("Semangka")
-        m.add("Jeruk")
-        puts @@fruits[0]
-        puts @@fruits[1]
-        puts m.getSize
+    def delete(fruit)
+        @@fruits.delete(fruit)
+        @@lastLength = @@lastLength - 1
     end
+
+    def show
+        @@fruits
+    end
+
+    # run-app
+    # if @isTest == false
+        # m = Material.new
+        # m.add("Jambu")
+        # m.add("Durian")
+        # m.add("Sirsak")
+        # puts m.getSize
+        # puts
+        # puts m.show
+        # puts
+        # m.delete("Durian")
+        # puts
+        # puts m.show
+        # puts
+        # puts m.getSize
+    # end
 
 end
 
@@ -65,15 +85,15 @@ if @isTest
                 expect(m.contains("Mangga")).to eq true
             end
 
-            # it "expected result are 3 and 2" do
-            #     m = Material.new
-            #     m.add("Jambu")
-            #     m.add("Durian")
-            #     m.add("Sirsak")
-            #     expect(m.getSize).to eq 3
-            #     # m.delete("Durian")
-            #     # expect(m.getSize).to eq 2
-            # end
+            it "expected result is 3" do
+                m = Material.new
+                m.add("Jambu")
+                m.add("Durian")
+                m.add("Sirsak")
+                expect(m.getSize).to eq 3
+                m.delete("Durian")
+                expect(m.getSize).to eq 2
+            end
 
         end
     end
